@@ -1,0 +1,153 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: radial-gradient(circle at top left, #271f49, #0b0c16, #0b0c16, #1c1e2f);
+    font-family: Poppins, sans-serif;
+}
+/* Glassmorphism Card */
+.container {
+    width: 420px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 22px;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 35px rgba(120, 90, 255, 0.25);
+    animation: fadeIn 0.7s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 26px;
+    color: #ffffff;
+    letter-spacing: .5px;
+}
+
+/* Input UI */
+.input-group {
+    margin-bottom: 18px;
+}
+
+label {
+    font-size: 14px;
+    color: #d6d6d6;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    margin-top: 6px;
+    font-size: 14px;
+    transition: border .25s ease, box-shadow .25s ease;
+}
+
+/* Focus Glow */
+input:focus,
+textarea:focus {
+    border: 1px solid #7b5bff;
+    box-shadow: 0 0 9px rgba(126, 89, 255, 0.7);
+    outline: none;
+}
+/* Button */
+button {
+    position: relative;   /* swipe effect ke liye */
+    overflow: hidden;     /* light line bahar na nikal sake */
+    margin-top: 18px;
+    width: 100%;
+    padding: 13px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    background: linear-gradient(90deg, #6f4aff, #836aff);
+    transition: 0.3s ease;
+}
+/* Hover animation */
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 14px rgba(127, 92, 255, 0.85);
+}
+/* Error text */
+.error {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Success message */
+.success-msg {
+    margin-top: 12px;
+    color: #4ad66d;
+    font-size: 14px;
+    text-align: center;
+    animation: fadeSuccess .4s ease-out;
+}
+
+@keyframes fadeSuccess {
+    from { opacity: 0; transform: scale(.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+.container:hover {
+    box-shadow: 0 0 45px rgba(132, 96, 255, 0.45), 
+                0 0 90px rgba(132, 96, 255, 0.15);
+    transition: 0.4s ease-in-out;
+}
+/* Light swipe reflection on button */
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.75),
+        transparent
+    );
+    transform: translateX(-120%);
+    transition: transform 0.45s ease-out;
+    pointer-events: none;
+}
+button:hover::before {
+    transform: translateX(220%);
+}
+/* Success message animation – final fixed version */
+.success {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 12px;
+    color: #35d06e;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: all 0.45s ease;
+    visibility: hidden;
+}
+
+.success.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Green tick icon before success text */
+.success::before {
+    content: "✔ ";
+    font-weight: bold;
+}
